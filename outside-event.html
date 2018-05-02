@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <title>Document</title>
+    <style>
+      body {
+        padding: 0;
+        margin: 0;
+      }
+      
+      .container {
+          background: url('./images/bg.jpg'), url('./images/overlay.png');
+          background-size:cover;
+          height: 100vh;
+          background-blend-mode: screen;
+          width: 100%;
+          -webkit-clip-path: polygon(24% 0, 100% 0, 100% 75%, 0% 75%, 0 13%);
+          clip-path: polygon(24% 0, 100% 0, 100% 75%, 0% 75%, 0 13%);
+          margin-top: -20px;
+          padding-top: 100px;
+        }
+
+      h1 {
+          text-align: center;
+          color: #fff
+        }
+
+      .menu {
+        position: absolute;
+        left:10px;
+        top: 20px;
+        z-index: 99;
+        cursor: pointer
+        }
+
+      #mobMenu {
+      position: absolute;
+      background-color: #b68a35;
+      height: 100%;
+      z-index: 9999;
+      width: 280px;
+      color: #fff;
+      top: 0;
+      -webkit-transition: all .3s ease;
+      -moz-transition: all .3s ease;
+      transition: all .3s ease;
+      opacity: 1;
+      padding:10px;
+      z-index: 999
+    }
+
+  .sRight {
+    left: -300px;
+  }
+
+.slideMenu {
+    left: 0;
+}
+    </style>
+</head>
+<body>
+  <div class="container">
+    <h1> Mountain</h1>
+  </div>
+  <div class="menu">
+      <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" height="80px" id="Layer_1" style="enable-background:new 0 0 60 60;" version="1.1" viewBox="0 0 60 60" width="100px" xml:space="preserve"><path d="M4,10h24c1.104,0,2-0.896,2-2s-0.896-2-2-2H4C2.896,6,2,6.896,2,8S2.896,10,4,10z M28,14H4c-1.104,0-2,0.896-2,2  s0.896,2,2,2h24c1.104,0,2-0.896,2-2S29.104,14,28,14z M28,22H4c-1.104,0-2,0.896-2,2s0.896,2,2,2h24c1.104,0,2-0.896,2-2  S29.104,22,28,22z"/></svg>
+  </div>
+
+  <nav class="sRight" id="mobMenu"> 
+    Click outside to close this div
+  </nav>
+  <script type="text/javascript">
+    $(document).ready(function(){  
+      $(".menu").click(function(){
+        $(".sRight").toggleClass("slideMenu");
+    });
+
+       $(document).mouseup(function (e) {
+      var container = $("#mobMenu");
+      // if the target of the click isn't the container nor a descendant of the container
+      if (!container.is(e.target) && container.has(e.target).length === 0) {
+           $("#mobMenu").removeClass("slideMenu");
+      }
+    });
+
+  });
+  </script>
+</body>
+</html>
